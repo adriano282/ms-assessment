@@ -1,0 +1,45 @@
+extends layouts/main-layout.pug
+
+block content
+    main
+        if categories.length > 0
+            form(action="/submit-assessment", method="POST")
+                label(for="microserviceName") Nome do Microservice 
+                input(type="text", name="microserviceName", required)
+
+                br
+
+                label(for="microserviceOwner") Responsável pelo microservice 
+                input(type="text", name="microserviceOwner", required)
+
+                br
+
+                label(for="assessmentRespondent") Nome Pessoa Respondendo 
+                input(type="text", name="assessmentRespondent", required)
+
+                br
+
+                label(for="microserviceDomain") Domínio do Microservice 
+                input(type="text", name="microserviceDomain", required)
+
+                br
+
+                label(for="microserviceTeam") Time Responsável 
+                input(type="text", name="microserviceTeam", required)
+
+
+                input(type="hidden", name="version", value="1")
+                each c in categories
+                    if c.questions.length > 0
+                        h2 #{c.name}
+                        each q in c.questions
+                            h4 #{q.title}
+                            each a in q.alternatives
+                                input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, required)
+                                label(for=`${a.id}`) #{a.title}
+                                br
+                            
+                button.btn(type="submit") Finalizar Assessment
+        else
+            h1 No Questions
+        

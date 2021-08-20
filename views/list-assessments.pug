@@ -1,0 +1,32 @@
+extends layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/table.css")
+
+block content
+    main
+        if assessments.length > 1
+            table(style='width:100%', border='1', class='styled-table')
+                thead 
+                    tr
+                        th Responsável
+                        th Domínio
+                        th Microservice
+                        th Pontuação
+                        th Data Preenchimento
+                        th Link
+                tbody 
+                    for assess in assessments
+                        tr 
+                            td #{assess.assessment.microserviceOwner}
+                            td #{assess.assessment.microserviceDomain}
+                            td #{assess.assessment.microserviceName}
+                            td #{assess.pontuation}
+                            td #{(assess.takenDate.getFullYear() + "-" + ((assess.takenDate.getMonth() + 1)) + "-" + (assess.takenDate.getDate() ) + " " + (assess.takenDate.getHours()) + ":" + (assess.takenDate.getMinutes()))}
+                            td 
+                                a(href=`/assessment/${assess.id}`) Visualizar
+        else
+            h1 Nenhum Assessment Preenchido ainda.
+
+        
+        

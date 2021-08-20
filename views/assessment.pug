@@ -1,0 +1,54 @@
+extends layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/custom.css")
+
+block content
+    main
+        .row
+            .column
+                p Nome do Microservice: 
+                    strong 
+                        h1
+                            i #{assessment.microserviceName}
+                p Responsável pelo microservice: 
+                    strong 
+                        i #{assessment.microserviceOwner}
+                p Time Responsável: 
+                    strong 
+                        i #{assessment.microserviceTeam}
+                p Domínio Microservice: 
+                    strong
+                        i #{assessment.microserviceTeam}
+                p Pessoa Preenchimento 
+                    strong
+                        i #{assessment.assessmentRespondent}
+            .column
+                h1 Nota Microservice: 
+                    if (pontuation < 70)
+                        .error
+                            h1 
+                                i #{pontuation} / 100
+                    else 
+                        .success  
+                            h1  
+                                i #{pontuation} / 100
+
+        each c in assessment.categories
+            h2 #{c.name}
+            each q in c.questions
+                h4 #{q.title}
+                each a in q.alternatives
+                    if (a.weight < 0 && a.selected === true)
+                        .error
+                            input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, checked=a.selected, onclick="return false;")
+                            label(for=`${a.id}`) #{a.title}   #{a.weight} pontos
+                    else if (a.selected === true)
+                        .success
+                            input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, checked=a.selected, onclick="return false;")
+                            label(for=`${a.id}`) #{a.title}  #{a.weight} pontos
+                    else 
+                        input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, checked=a.selected, onclick="return false;")
+                        label(for=`${a.id}`) #{a.title}
+                        br
+    

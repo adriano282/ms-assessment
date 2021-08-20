@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    ports:
+      - 8011:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo1
+    links:
+      - mongo1
+
+  mongo1:
+    image: "mongo:4.0-xenial"
+    container_name: mongo1
+    ports:
+      - "27017:27017"
+    restart: always
+
+  msassessment:
+    image: adrianojesus/msassessment
+    container_name: msassessment
+    ports:
+      - 3000:3000
+#volumes:
+#  plugins:
+#    external: true
