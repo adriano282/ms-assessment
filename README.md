@@ -1,2 +1,2 @@
 # ms-assessment
-A web application for assess microservice application using a survey form.
+A web application to register microservice application assessment using a survey form.
