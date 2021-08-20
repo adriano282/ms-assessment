@@ -4,7 +4,7 @@ A simple web application to register microservice application assessment using a
 ## How To Run
 cd ms-assessment
 
-docker-compose up
+./run.sh
 
 The web application will be running on https://localhost:3000
 
