@@ -1,3 +1,3 @@
 docker build . -t adrianojesus/msassessment
 
-docker-componse up
+docker-compose up
