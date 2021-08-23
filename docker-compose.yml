@@ -23,6 +23,8 @@ services:
     container_name: msassessment
     ports:
       - 3000:3000
+    links: 
+      - mongo1
 #volumes:
 #  plugins:
 #    external: true
