@@ -6,6 +6,20 @@
     color: #2ddb01
 }
 
+.box {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 40px;
+}
+
+.category {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    padding: 40px;
+}
+
+.center {
+    text-align: center;
+}
+
 .column {
     float: left;
     width: 50%;

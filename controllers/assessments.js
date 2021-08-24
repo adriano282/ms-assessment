@@ -6,16 +6,10 @@ const Question = require('../models/question');
 
 const Assessment = require('../models/assessment');
 
-var idGenerator = 0;
-
-function nextId() {
-	return ++idGenerator;
-}
-
-function setupAndSaveCategory(id, questions, categories) {
-	let category = Category.findById(id);
+function getCategory(id, questions) {
+	const category = Category.findById(id);
 	category.questions = questions;
-	categories.push(category);
+	return category;
 }
 
 function getAlternativeWeight(question, alternativeId) {
@@ -48,13 +42,15 @@ function buildAssessmentAndPontuation(req) {
 		let question = Question.findQuestionById(questionId);
 		question.alternatives[alternativeId -1].selected = true;
 
-		if (categoryIdBefore != question.categoryId && categoryIdBefore > 0) {
+		if (categoryIdBefore == 0) {
+			categoryIdBefore++;
+		}
+		else if (categoryIdBefore != question.categoryId) {
 			
-			setupAndSaveCategory(
+			categories.push(getCategory(
 				categoryIdBefore == 0 ? question.categoryId : categoryIdBefore,
-				questions,
-				categories
-			);
+				questions
+			));
 
 			questions = [];
 			categoryIdBefore = question.categoryId;	
@@ -64,11 +60,11 @@ function buildAssessmentAndPontuation(req) {
 		sumPontuation += getAlternativeWeight(question, alternativeId -1);
 
 		if (i == maxQuestions) {
-			setupAndSaveCategory(
+			categories.push(getCategory(
 				question.categoryId,
-				questions,
-				categories
-			);
+				questions
+			));
+			console.log(categories);
 		}
 	}
 
@@ -96,13 +92,23 @@ exports.postFilledAssessment =  (req, res, next) => {
 }
 
 exports.getFilledAssessments = (req, res, next) => {
-	FilledAssessment.find()
-	.then(
-		assessments => {
-			res.render('list-assessments', {assessments: assessments});
+
+	const {page} = req.query;
+
+	const options = {
+		page: parseInt(page),
+		limit: 10
+	}
+
+	FilledAssessment.paginate({}, options)
+	.then((results, err) => {
+			if (err) {
+				console.log(err);
+			} else {
+				res.render('list-assessments', {assessments: results.docs, page_count: results.totalPages, current_page: !page ? 1 : parseInt(page)});		
+			}
 		}
-	)
-	.catch((err=> {console.log(err)}));
+	);
 }
 
 exports.getFilledAssessmentById = (req, res, next) => {

@@ -601,7 +601,7 @@ const questions = [
         ]
     },
     {
-        categoryId: 1,
+        categoryId: 3,
         id: 32,
         title: 'É realizado o teste de caos?',
         alternatives: [
@@ -641,7 +641,7 @@ const questions = [
     {
         categoryId: 4,
         id: 34,
-        title: 'O log das aplicações reflete o estado do microservice a qualquer momento?',
+        title: 'O log das aplicações refletem o estado do microservice a qualquer momento?',
         alternatives: [
             {
                 id: 1,
@@ -657,20 +657,6 @@ const questions = [
             }
         ]
     }
-
-
-
-
-   
-
-   
-
-    
-
-   
-    
-    
-
 ];
 
 module.exports = class Question {

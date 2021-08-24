@@ -2,6 +2,8 @@ const filledAssessments = [];
 
 const mongoose = require('mongoose');
 
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 const Schema = mongoose.Schema;
 
 const filledAssessmentSchema = new Schema({
@@ -15,5 +17,7 @@ const filledAssessmentSchema = new Schema({
         required: true
    }
 });
+
+filledAssessmentSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('FilledAssessment', filledAssessmentSchema);

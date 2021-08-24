@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.13.7",
+    "mongoose-paginate-v2": "^1.4.2",
     "pug": "^3.0.2"
   }
 }

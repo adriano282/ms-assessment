@@ -2,6 +2,8 @@ extends layouts/main-layout.pug
 
 block styles
     link(rel="stylesheet", href="/css/table.css")
+    link(rel="stylesheet", href="/css/pagination.css")
+    link(rel="stylesheet", href="/css/custom.css")
 
 block content
     main
@@ -25,6 +27,24 @@ block content
                             td #{(assess.takenDate.getFullYear() + "-" + ((assess.takenDate.getMonth() + 1)) + "-" + (assess.takenDate.getDate() ) + " " + (assess.takenDate.getHours()) + ":" + (assess.takenDate.getMinutes()))}
                             td 
                                 a(href=`/assessment/${assess.id}`) Visualizar
+            .center
+                .pagination
+                    - var n = 1
+
+                    if current_page > 1
+                        a(href="?page="+(n)) <<
+                        a(href="?page="+(current_page-1)) <
+                        
+                    while n < page_count+1
+                        if current_page == n
+                            a(class="active", href="?page="+n)=n++
+                        else 
+                            a(href="?page="+n)=n++
+                    
+                    if current_page != page_count
+                        a(href="?page="+(current_page+1)) >
+                        a(href="?page="+(n -1)) >>
+
         else
             h1 Nenhum Assessment Preenchido ainda.
 
