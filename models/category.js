@@ -51,7 +51,9 @@ module.exports = class Category {
     }
 }
 const Category = require('./category');
-categories.push(new Category(1, 'Estabilidade e Confiabilidade', []));
-categories.push(new Category(2, 'Escalabilidade e Desempenho', []));
-categories.push(new Category(3, 'Tolerância a Falhas e preparação para Catástrofes', []));
-categories.push(new Category(4, 'Monitoramento', []));
+categories.push(new Category(1, 'Processo Desenvolvimento', []));
+categories.push(new Category(2, 'Dependências', []));
+categories.push(new Category(3, 'Escalabilidade e Desempenho', []));
+categories.push(new Category(4, 'Tolerância a Falhas e preparação para Catástrofes', []));
+categories.push(new Category(5, 'Monitoramento', []));
+categories.push(new Category(6, 'Onboarding', []));
