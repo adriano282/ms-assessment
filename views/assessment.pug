@@ -44,10 +44,6 @@ block content
                             .error
                                 input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, checked=a.selected, onclick="return false;")
                                 label(for=`${a.id}`) #{a.title}   #{a.weight} pontos
-                        else if (a.selected === true)
-                            .success
-                                input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, checked=a.selected, onclick="return false;")
-                                label(for=`${a.id}`) #{a.title}  #{a.weight} pontos
                         else 
                             input(type="radio", id=`${a.id}`, name=`${q.id}`, value=`${a.id}`, checked=a.selected, onclick="return false;")
                             label(for=`${a.id}`) #{a.title}

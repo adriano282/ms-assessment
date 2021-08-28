@@ -7,13 +7,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não',
-                weight: -10,
+                weight: -3,
                 selected: false
             }
         ]
@@ -26,13 +26,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não',
-                weight: -10,
+                weight: 0,
                 selected: false
             }
         ]
@@ -45,13 +45,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não',
-                weight: -10,
+                weight: -3,
                 selected: false
             }
         ]
@@ -64,13 +64,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim. Automatizados',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Sim, somente manualmente',
-                weight: -10,
+                weight: 0,
                 selected: false
             },
             {
@@ -90,19 +90,19 @@ const questions = [
             {
                 id: 1,
                 title: 'A partir de 70%',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Entre 50% e 69%',
-                weight: 0,
+                weight: 1,
                 selected: false
             },
             {
                 id: 3,
                 title: 'Abaixo de 50%',
-                weight: -10,
+                weight: -5,
                 selected: false
             }
         ]
@@ -115,19 +115,19 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim, é entregue parcialmente em produção de forma desligada até subir o todo',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
-                title: 'Sim, é entregue parcialmente em produção forma ligada',
-                weight: 0,
+                title: 'Sim, é entregue parcialmente em produção de forma ligada',
+                weight: -1,
                 selected: false
             },
             {
                 id: 3,
                 title: 'É entregue somente quando tudo for desenvolvido o',
-                weight: -10,
+                weight: -3,
                 selected: false
             }
         ]
@@ -140,13 +140,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -3,
                 selected: false
             }
         ]
@@ -159,7 +159,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -178,13 +178,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -197,13 +197,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -3,
                 selected: false
             }
         ]
@@ -216,7 +216,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -235,13 +235,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -249,18 +249,18 @@ const questions = [
     {
         categoryId: 3,
         id: 13,
-        title: 'O throughput máximo que o microserviço suporta é conhecido?',
+        title: 'O throughput máximo que uma instância do microserviço suporta é conhecido?',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -1,
                 selected: false
             }
         ]
@@ -268,18 +268,18 @@ const questions = [
     {
         categoryId: 3,
         id: 14,
-        title: 'As dependências são escaláveis e de alto desenpenho',
+        title: 'Todas as dependências são escaláveis e de alto desenpenho',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -20,
                 selected: false
             }
         ]
@@ -287,12 +287,12 @@ const questions = [
     {
         categoryId: 3,
         id: 15,
-        title: 'Os padrões de trafego do microservice é conhecido?',
+        title: 'Os padrões de trafego do microservice são conhecidos?',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -311,13 +311,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -330,13 +330,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -349,13 +349,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -3,
                 selected: false
             }
         ]
@@ -368,7 +368,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: -10,
                 selected: false
             },
             {
@@ -387,7 +387,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -405,13 +405,13 @@ const questions = [
         alternatives: [
             {
                 id: 1,
-                title: 'Sim',
-                weight: 10,
+                title: 'Sim, é dedicado',
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
-                title: 'Não.',
+                title: 'Não é dedicado',
                 weight: 0,
                 selected: false
             }
@@ -420,18 +420,18 @@ const questions = [
     {
         categoryId: 3,
         id: 22,
-        title: 'Este microservice precisa de um desempenho maior de escrita ou leitura?',
+        title: 'O padrão de acesso do microservice aos dados é conhecido?Este microservice precisa de um desempenho maior de escrita ou leitura?',
         alternatives: [
             {
                 id: 1,
-                title: 'Sim',
-                weight: 10,
+                title: 'Sim, estamos ciente se ele é mais escrita intensivo ou leitura intensiva',
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
-                title: 'Não.',
-                weight: 0,
+                title: 'O padrão de acesso aos dados é desconhecido.',
+                weight: -10,
                 selected: false
             }
         ]
@@ -439,18 +439,18 @@ const questions = [
     {
         categoryId: 3,
         id: 23,
-        title: 'Este microservice trata os dados de forma escalãvel e de alto desempenho?',
+        title: 'Este microservice está preparado para lidar com os padrões de acesso de dados de forma adequada?',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -2.70,
                 selected: false
             }
         ]
@@ -458,18 +458,24 @@ const questions = [
     {
         categoryId: 3,
         id: 24,
-        title: 'A base de dados deste microsrevice escala de forma horizontal ou vertical?',
+        title: 'A base de dados deste microservice escala de forma horizontal ou vertical?',
         alternatives: [
             {
                 id: 1,
-                title: 'Sim',
-                weight: 10,
+                title: 'Sim, vertical e horizontal',
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
-                title: 'Não.',
+                title: 'Não. Somente vertical',
                 weight: 0,
+                selected: false
+            },
+            {
+                id: 3,
+                title: 'Não escala',
+                weight: -10,
                 selected: false
             }
         ]
@@ -482,13 +488,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: -10,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: 5.40,
                 selected: false
             }
         ]
@@ -496,18 +502,18 @@ const questions = [
     {
         categoryId: 4,
         id: 26,
-        title: 'Caso exista pontos de falha, eles são mitigados ou eliminados?',
+        title: 'Caso exista pontos de falha, eles são minimizados e tratados?',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -10,
                 selected: false
             }
         ]
@@ -520,7 +526,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -539,7 +545,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim.',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -553,18 +559,18 @@ const questions = [
     {
         categoryId: 5,
         id: 29,
-        title: 'As principais métricas hardware do microservice são conhecidas e monitoradas?',
+        title: 'As principais métricas hardware do microservice são conhecidas, monitoradas e documentadas?',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -578,13 +584,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -10,
                 selected: false
             }
         ]
@@ -598,7 +604,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
@@ -616,14 +622,14 @@ const questions = [
         alternatives: [
             {
                 id: 1,
-                title: 'Sim',
-                weight: 10,
+                title: 'Não está logando',
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
-                title: 'Não.',
-                weight: 0,
+                title: 'Sim, está',
+                weight: -30,
                 selected: false
             }
         ]
@@ -636,13 +642,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -650,18 +656,18 @@ const questions = [
     {
         categoryId: 6,
         id: 34,
-        title: 'O readme do microservice possui todas informações suficientes para alguém novo conseguir entender o contexto do microservice, como rodar localmente, e link das documentações?',
+        title: 'O readme do microservice possui todas informações suficientes para alguém novo conseguir entender o contexto do microservice, como rodar localmente, e link das documentações do microservice?',
         alternatives: [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -674,13 +680,13 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.70,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
                 selected: false
             }
         ]
@@ -693,13 +699,32 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 10,
+                weight: 2.71,
                 selected: false
             },
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -5,
+                selected: false
+            }
+        ]
+    },
+    {
+        categoryId: 6,
+        id: 37,
+        title: 'Todos do time possuem os acessos necessários para realização de troubleshooting em produção? Logs e Dashboards por exemplo?',
+        alternatives: [
+            {
+                id: 1,
+                title: 'Sim',
+                weight: 2.70,
+                selected: false
+            },
+            {
+                id: 2,
+                title: 'Não.',
+                weight: -2.70,
                 selected: false
             }
         ]

@@ -13,7 +13,7 @@ function getCategory(id, questions) {
 }
 
 function getAlternativeWeight(question, alternativeId) {
-	return parseInt(question.alternatives[alternativeId].weight);
+	return parseFloat(question.alternatives[alternativeId].weight);
 }
 
 function createAssessment(body, categories) {
@@ -57,7 +57,8 @@ function buildAssessmentAndPontuation(req) {
 		}
 		
 		questions.push(question);
-		sumPontuation += getAlternativeWeight(question, alternativeId -1);
+		sumPontuation = (sumPontuation + getAlternativeWeight(question, alternativeId -1));
+		console.log("Pontos " + sumPontuation);
 
 		if (i == maxQuestions) {
 			categories.push(getCategory(
