@@ -32,7 +32,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não',
-                weight: 0,
+                weight: -1,
                 selected: false
             }
         ]
@@ -51,7 +51,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não',
-                weight: 0,
+                weight: -1,
                 selected: false
             }
         ]
@@ -70,7 +70,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não',
-                weight: 0,
+                weight: -1,
                 selected: false
             }
         ]
@@ -89,7 +89,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não',
-                weight: 0,
+                weight: -1,
                 selected: false
             }
         ]
@@ -127,13 +127,13 @@ const questions = [
             {
                 id: 2,
                 title: 'Sim, somente manualmente',
-                weight: -2,
+                weight: -20,
                 selected: false
             },
             {
                 id: 3,
                 title: 'Não',
-                weight: -10,
+                weight: -31,
                 selected: false
             }
 
@@ -159,7 +159,7 @@ const questions = [
             {
                 id: 3,
                 title: 'Abaixo de 50%',
-                weight: -5,
+                weight: -10,
                 selected: false
             }
         ]
@@ -178,13 +178,13 @@ const questions = [
             {
                 id: 2,
                 title: 'Sim, é entregue parcialmente em produção de forma ligada',
-                weight: -1,
+                weight: -5,
                 selected: false
             },
             {
                 id: 3,
                 title: 'É entregue somente quando tudo for desenvolvido o',
-                weight: -2.5,
+                weight: -1,
                 selected: false
             }
         ]
@@ -203,7 +203,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -2.5,
+                weight: -1,
                 selected: false
             }
         ]
@@ -222,7 +222,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -1,
                 selected: false
             }
         ]
@@ -298,7 +298,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -2.5,
+                weight: -1,
                 selected: false
             }
         ]
@@ -412,7 +412,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -2.5,
+                weight: -10,
                 selected: false
             }
         ]
@@ -425,7 +425,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: -31,
+                weight: -20,
                 selected: false
             },
             {
@@ -450,7 +450,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: 0,
+                weight: -2,
                 selected: false
             }
         ]
@@ -488,7 +488,7 @@ const questions = [
             {
                 id: 2,
                 title: 'O padrão de acesso aos dados é desconhecido.',
-                weight: -20,
+                weight: -5,
                 selected: false
             }
         ]
@@ -507,7 +507,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -2.5,
+                weight: -5,
                 selected: false
             }
         ]
@@ -532,7 +532,7 @@ const questions = [
             {
                 id: 3,
                 title: 'Não escala',
-                weight: -40,
+                weight: -20,
                 selected: false
             }
         ]
@@ -545,7 +545,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: -10,
+                weight: -5,
                 selected: false
             },
             {
@@ -570,7 +570,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -20,
+                weight: -31,
                 selected: false
             }
         ]
@@ -627,7 +627,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -20,
+                weight: -10,
                 selected: false
             }
         ]
@@ -686,7 +686,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Sim, está',
-                weight: -2.50,
+                weight: -31,
                 selected: false
             }
         ]
@@ -705,7 +705,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -5,
+                weight: -10,
                 selected: false
             }
         ]
@@ -756,7 +756,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: 2.71,
+                weight: 2.5,
                 selected: false
             },
             {
