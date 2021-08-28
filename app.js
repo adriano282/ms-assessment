@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(assessmentRoutes);
 
 mongoDb
-    .connect('mongodb://mongo1:27017/test?useNewUrlParser=true')
+    .connect('mongodb://mongo1:27017/ms-assessment?useNewUrlParser=true')
     .then( () => {console.log('connected mongodb!')})
     .catch( err => {console.log(err)});
 
