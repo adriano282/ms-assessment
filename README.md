@@ -4,7 +4,7 @@ A simple web application to register microservice application assessment using a
 ## How To Run
 cd ms-assessment && sh run.sh
 
-The web application will be running on https://localhost:3000
+The web application will be running on http://localhost:3000
 
 ## Database MongoDB
 
