@@ -374,7 +374,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -5,
+                weight: -20,
                 selected: false
             }
         ]
@@ -425,7 +425,7 @@ const questions = [
             {
                 id: 1,
                 title: 'Sim',
-                weight: -10,
+                weight: -31,
                 selected: false
             },
             {
@@ -488,7 +488,7 @@ const questions = [
             {
                 id: 2,
                 title: 'O padrão de acesso aos dados é desconhecido.',
-                weight: -10,
+                weight: -20,
                 selected: false
             }
         ]
@@ -532,7 +532,7 @@ const questions = [
             {
                 id: 3,
                 title: 'Não escala',
-                weight: -10,
+                weight: -40,
                 selected: false
             }
         ]
@@ -570,7 +570,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -10,
+                weight: -20,
                 selected: false
             }
         ]
@@ -627,7 +627,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -5,
+                weight: -20,
                 selected: false
             }
         ]
