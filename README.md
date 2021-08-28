@@ -6,3 +6,12 @@ cd ms-assessment && sh run.sh
 
 The web application will be running on https://localhost:3000
 
+## Database MongoDB
+
+Mongo Express UI: http://localhost:8011/
+
+
+## Scree Assessment Result
+
+![Screenshot](images/assessment-result.png)
+
