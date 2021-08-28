@@ -13,7 +13,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não',
-                weight: -3,
+                weight: -1,
                 selected: false
             }
         ]
@@ -108,7 +108,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não',
-                weight: -3,
+                weight: -1,
                 selected: false
             }
         ]
@@ -127,7 +127,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Sim, somente manualmente',
-                weight: 0,
+                weight: -2,
                 selected: false
             },
             {
@@ -184,7 +184,7 @@ const questions = [
             {
                 id: 3,
                 title: 'É entregue somente quando tudo for desenvolvido o',
-                weight: -3,
+                weight: -2.5,
                 selected: false
             }
         ]
@@ -203,7 +203,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -3,
+                weight: -2.5,
                 selected: false
             }
         ]
@@ -241,7 +241,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -5,
+                weight: -2.5,
                 selected: false
             }
         ]
@@ -260,7 +260,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -3,
+                weight: -2.5,
                 selected: false
             }
         ]
@@ -298,7 +298,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -5,
+                weight: -2.5,
                 selected: false
             }
         ]
@@ -412,7 +412,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Não.',
-                weight: -3,
+                weight: -2.5,
                 selected: false
             }
         ]
@@ -686,7 +686,7 @@ const questions = [
             {
                 id: 2,
                 title: 'Sim, está',
-                weight: -30,
+                weight: -2.50,
                 selected: false
             }
         ]
