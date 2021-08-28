@@ -70,6 +70,7 @@ function buildAssessmentAndPontuation(req) {
 	}
 
 	const assessment = createAssessment(req.body, categories);
+	sumPontuation = sumPontuation.toFixed(2);
 	return {
 		assessment,
 		sumPontuation
