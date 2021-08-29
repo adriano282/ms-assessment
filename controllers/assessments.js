@@ -85,8 +85,8 @@ exports.postFilledAssessment =  (req, res, next) => {
 		assessment: result.assessment,
         pontuation: result.sumPontuation,
 		takenDate: new Date(),
-		yearTaken: new Date().getFullYear(),
-		monthTaken: new Date().getMonth() + 1,
+		yearTaken: '' + new Date().getFullYear(),
+		monthTaken: ('0' + (new Date().getMonth() + 1).slice(-2)),
 		microserNameAssessmentYearAndMonth: result.assessment.microserviceName + new Date().getFullYear() + new Date().getMonth() + 1
 	})
 	.save()
@@ -139,11 +139,48 @@ function getColor() {
 }
 
 exports.getResultsByDomain = (req, res, next) => {
+
+	let minMonth;
+	let minYear;
+
+	let maxMonth;
+	let maxYear;
+
+	let finalLabels = []
+	FilledAssessment
+		.aggregate(
+
+			[
+				{ "$match" : { 'assessment.microserviceDomain': req.params.domain }},
+				{ "$project" : { 
+					yearPlusMonth: {"$concat" : [ { "$toString" : "$yearTaken" } , "$monthTaken" ]},
+					year: '$yearTaken',
+					month: '$monthTaken'
+					}
+				},
+				{ "$group": {
+					_id: null,
+					max: {"$max" : "$yearPlusMonth" },
+					min: {"$min" : "$yearPlusMonth" }
+									}
+				}
+			]
+		).then(docs => {
+			
+			let start = parseInt(docs[0].min);
+			let end = parseInt(docs[0].max);
+
+			for (let i = start; i <= end; i++) {
+				finalLabels.push(('' + i).slice(-2) + '/'+ ('' + i).slice(0, 4));
+			}
+		});
+
+
 	FilledAssessment
 		.aggregate(
 			[
 				{ "$match" : { 'assessment.microserviceDomain': req.params.domain }},
-				{ "$sort": { takenDate: -1}},
+				{ "$sort": { takenDate: 1}},
 				{ "$group": {
 					_id: "$microserNameAssessmentYearAndMonth",
 					microservice: { $first: "$assessment.microserviceName" },
@@ -154,20 +191,19 @@ exports.getResultsByDomain = (req, res, next) => {
 				}}
 			]
 		)
+		.sort({date: 1})
 		.sort({microservice: -1})
 		.then(docs => {
-
-			let labels = [];
 			let first;
 			let datasets =  [];
 			let grades = [];
-
-			for (let i = 0; i < docs.length; i++) {
+		
+			for (let i = 0, l = 0; i < docs.length; i++, l++) {
 				if (!first) {
 					first = docs[i].microservice;
+
 				}
 
-				
 				if (first != docs[i].microservice) {
 					let color = getColor();
 					datasets.push(
@@ -179,18 +215,29 @@ exports.getResultsByDomain = (req, res, next) => {
 						}
 					);
 
+					l = 0;
 					grades = [];
 					first = docs[i].microservice;
 				} 
-				
 
-				grades.push(docs[i].grade);
-				
-				let oneDate = (docs[i].month + "/" + docs[i].year);
-				if (!labels.includes(oneDate)) {
-					labels.push(oneDate)
+				let label = docs[i].month + '/' + docs[i].year;
+				while (label != finalLabels[l]) {
+
+					if (grades.length > 0) {
+						grades.push(grades[grades.length-1]);
+					}
+					else {
+						grades.push(null);
+					}
+					
+					if ((grades.length -1) == l) {
+						break;
+					}
+					else {l++;}
 				}
-
+				
+				grades.push(docs[i].grade);
+			
 				if (i+1 == docs.length) {
 					let color = getColor();
 					datasets.push(
@@ -202,13 +249,15 @@ exports.getResultsByDomain = (req, res, next) => {
 						}
 					);
 				}
-
 			}
 		
+		
+
+
 			const setup = {
 				type: 'line',
 				data: {
-					labels: labels,
+					labels: finalLabels,
 					datasets: datasets
 				},
 				options: {}
