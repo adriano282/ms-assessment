@@ -11,7 +11,10 @@ The web application will be running on http://localhost:3000
 Mongo Express UI: http://localhost:8011/
 
 
-## Screen Assessment Result
+## Screens
 
 ![Screenshot](images/assessment-result.png)
 
+![Screenshot](microservices-grades.chart.png)
+
+![Screenshot](list-assessments.png)

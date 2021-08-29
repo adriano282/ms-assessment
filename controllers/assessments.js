@@ -256,7 +256,8 @@ exports.getResultsByDomain = (req, res, next) => {
 						labels: finalLabels,
 						datasets: datasets
 					},
-					options: {}
+					options: {
+					}
 				}	
 				res.render('assessmentsByDomain', {setup: setup, domain: req.params.domain});
 			});
