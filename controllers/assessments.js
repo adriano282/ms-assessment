@@ -140,12 +140,6 @@ function getColor() {
 
 exports.getResultsByDomain = (req, res, next) => {
 
-	let minMonth;
-	let minYear;
-
-	let maxMonth;
-	let maxYear;
-
 	let finalLabels = []
 	FilledAssessment
 		.aggregate(
@@ -165,7 +159,9 @@ exports.getResultsByDomain = (req, res, next) => {
 									}
 				}
 			]
-		).then(docs => {
+		)
+		.catch(err => {console.log(err)})
+		.then(docs => {
 			
 			let start = parseInt(docs[0].min);
 			let end = parseInt(docs[0].max);
@@ -173,98 +169,96 @@ exports.getResultsByDomain = (req, res, next) => {
 			for (let i = start; i <= end; i++) {
 				finalLabels.push(('' + i).slice(-2) + '/'+ ('' + i).slice(0, 4));
 			}
-		});
 
 
-	FilledAssessment
-		.aggregate(
-			[
-				{ "$match" : { 'assessment.microserviceDomain': req.params.domain }},
-				{ "$sort": { takenDate: 1}},
-				{ "$group": {
-					_id: "$microserNameAssessmentYearAndMonth",
-					microservice: { $first: "$assessment.microserviceName" },
-					date: { $first: "$takenDate"},
-					grade: { $first : "$pontuation"},
-					year: { $first : "$yearTaken"},
-					month: { $first : "$monthTaken"},
-				}}
-			]
-		)
-		.sort({date: 1})
-		.sort({microservice: -1})
-		.then(docs => {
-			let first;
-			let datasets =  [];
-			let grades = [];
-		
-			for (let i = 0, l = 0; i < docs.length; i++, l++) {
-				if (!first) {
-					first = docs[i].microservice;
-
-				}
-
-				if (first != docs[i].microservice) {
-					let color = getColor();
-					datasets.push(
-						{
-							label: docs[i-1].microservice,
-							backgroundColor: color,
-							borderColor: color,
-							data: [...grades],
-						}
-					);
-
-					l = 0;
-					grades = [];
-					first = docs[i].microservice;
-				} 
-
-				let label = docs[i].month + '/' + docs[i].year;
-				while (label != finalLabels[l]) {
-
-					if (grades.length > 0) {
-						grades.push(grades[grades.length-1]);
+			FilledAssessment
+			.aggregate(
+				[
+					{ "$match" : { 'assessment.microserviceDomain': req.params.domain }},
+					{ "$sort": { takenDate: 1}},
+					{ "$group": {
+						_id: "$microserNameAssessmentYearAndMonth",
+						microservice: { $first: "$assessment.microserviceName" },
+						date: { $first: "$takenDate"},
+						grade: { $first : "$pontuation"},
+						year: { $first : "$yearTaken"},
+						month: { $first : "$monthTaken"},
+					}}
+				]
+			)
+			.sort({date: 1})
+			.sort({microservice: -1})
+			.then(docs => {
+				let first;
+				let datasets =  [];
+				let grades = [];
+			
+				for (let i = 0, l = 0; i < docs.length; i++, l++) {
+					if (!first) {
+						first = docs[i].microservice;
+	
 					}
-					else {
-						grades.push(null);
+	
+					if (first != docs[i].microservice) {
+						let color = getColor();
+						datasets.push(
+							{
+								label: docs[i-1].microservice,
+								backgroundColor: color,
+								borderColor: color,
+								data: [...grades],
+							}
+						);
+	
+						l = 0;
+						grades = [];
+						first = docs[i].microservice;
+					} 
+	
+					let label = docs[i].month + '/' + docs[i].year;
+					
+					while (label != finalLabels[l] && l < finalLabels.length)  {
+						
+						if (grades.length > 0) {
+							// retrives the last grade to use here
+							grades.push(grades[grades.length-1]);
+						}
+						else {
+							grades.push(null);
+						}
+						
+						if ((grades.length -1) == l) {
+							break;
+						}
+						else {
+							l++;
+						}
 					}
 					
-					if ((grades.length -1) == l) {
-						break;
-					}
-					else {l++;}
-				}
+					grades.push(docs[i].grade);
 				
-				grades.push(docs[i].grade);
-			
-				if (i+1 == docs.length) {
-					let color = getColor();
-					datasets.push(
-						{
-							label: docs[i].microservice,
-							backgroundColor: color,
-							borderColor: color,
-							data: [...grades],
-						}
-					);
+					if (i+1 == docs.length) {
+						let color = getColor();
+						datasets.push(
+							{
+								label: docs[i].microservice,
+								backgroundColor: color,
+								borderColor: color,
+								data: [...grades],
+							}
+						);
+					}
 				}
-			}
-		
-		
-
-
-			const setup = {
-				type: 'line',
-				data: {
-					labels: finalLabels,
-					datasets: datasets
-				},
-				options: {}
-			}	
-			res.render('assessmentsByDomain', {setup: setup, domain: req.params.domain});
+			
+				const setup = {
+					type: 'line',
+					data: {
+						labels: finalLabels,
+						datasets: datasets
+					},
+					options: {}
+				}	
+				res.render('assessmentsByDomain', {setup: setup, domain: req.params.domain});
+			});
 		});
-		
-
-
 }
