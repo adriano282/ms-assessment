@@ -87,7 +87,7 @@ exports.postFilledAssessment =  (req, res, next) => {
 		takenDate: new Date(),
 		yearTaken: '' + new Date().getFullYear(),
 		monthTaken: ('0' + (new Date().getMonth() + 1).slice(-2)),
-		microserNameAssessmentYearAndMonth: result.assessment.microserviceName + new Date().getFullYear() + new Date().getMonth() + 1
+		microserNameAssessmentYearAndMonth: result.assessment.microserviceName + new Date().getFullYear() + (new Date().getMonth() + 1)
 	})
 	.save()
 	.then(() => {console.log('filledAssessment Saved')})
