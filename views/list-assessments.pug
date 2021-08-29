@@ -21,7 +21,8 @@ block content
                     for assess in assessments
                         tr 
                             td #{assess.assessment.microserviceOwner}
-                            td #{assess.assessment.microserviceDomain}
+                            td 
+                                a(href=`/assessments/domain/${assess.assessment.microserviceDomain}`) #{assess.assessment.microserviceDomain}
                             td #{assess.assessment.microserviceName}
                             td #{assess.pontuation}
                             td #{(assess.takenDate.getFullYear() + "-" + ((assess.takenDate.getMonth() + 1)) + "-" + (assess.takenDate.getDate() ) + " " + (assess.takenDate.getHours()) + ":" + (assess.takenDate.getMinutes()))}

@@ -1,0 +1,18 @@
+extends layouts/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/custom.css")
+
+
+block content
+    main
+        
+        h3.tile-title Domínio #{domain}
+            div
+                canvas(id="lineChartDemo")
+        
+        script(type='text/javascript', src="https://cdn.jsdelivr.net/npm/chart.js")
+        script(type='text/javascript').
+            
+            var ctxl = document.getElementById('lineChartDemo');
+            var lineChart = new Chart(ctxl, !{JSON.stringify(setup)} );

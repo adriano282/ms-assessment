@@ -15,7 +15,20 @@ const filledAssessmentSchema = new Schema({
    takenDate: {
        type: Date,
         required: true
+   },
+   yearTaken: {
+       type: Number,
+       required: true
+   },
+   monthTaken: {
+       type: Number,
+       required: true
+   },
+   microserNameAssessmentYearAndMonth: {
+       type: String,
+       required: true
    }
+
 });
 
 filledAssessmentSchema.plugin(mongoosePaginate);

@@ -84,7 +84,10 @@ exports.postFilledAssessment =  (req, res, next) => {
 	new FilledAssessment({
 		assessment: result.assessment,
         pontuation: result.sumPontuation,
-		takenDate: new Date()
+		takenDate: new Date(),
+		yearTaken: new Date().getFullYear(),
+		monthTaken: new Date().getMonth() + 1,
+		microserNameAssessmentYearAndMonth: result.assessment.microserviceName + new Date().getFullYear() + new Date().getMonth() + 1
 	})
 	.save()
 	.then(() => {console.log('filledAssessment Saved')})
@@ -126,3 +129,93 @@ exports.getTemplateAssessment = (req, res, next) => {
 
 	res.render('new', {categories : categories});
 };
+
+
+function getColor() {
+	return 'rgb(' 
+		+ Math.floor(Math.random() * 256) + ', ' 
+		+ Math.floor(Math.random() * 256) + ', ' 
+		+ Math.floor(Math.random() * 256)+')';
+}
+
+exports.getResultsByDomain = (req, res, next) => {
+	FilledAssessment
+		.aggregate(
+			[
+				{ "$match" : { 'assessment.microserviceDomain': req.params.domain }},
+				{ "$sort": { takenDate: -1}},
+				{ "$group": {
+					_id: "$microserNameAssessmentYearAndMonth",
+					microservice: { $first: "$assessment.microserviceName" },
+					date: { $first: "$takenDate"},
+					grade: { $first : "$pontuation"},
+					year: { $first : "$yearTaken"},
+					month: { $first : "$monthTaken"},
+				}}
+			]
+		)
+		.sort({microservice: -1})
+		.then(docs => {
+
+			let labels = [];
+			let first;
+			let datasets =  [];
+			let grades = [];
+
+			for (let i = 0; i < docs.length; i++) {
+				if (!first) {
+					first = docs[i].microservice;
+				}
+
+				
+				if (first != docs[i].microservice) {
+					let color = getColor();
+					datasets.push(
+						{
+							label: docs[i-1].microservice,
+							backgroundColor: color,
+							borderColor: color,
+							data: [...grades],
+						}
+					);
+
+					grades = [];
+					first = docs[i].microservice;
+				} 
+				
+
+				grades.push(docs[i].grade);
+				
+				let oneDate = (docs[i].month + "/" + docs[i].year);
+				if (!labels.includes(oneDate)) {
+					labels.push(oneDate)
+				}
+
+				if (i+1 == docs.length) {
+					let color = getColor();
+					datasets.push(
+						{
+							label: docs[i].microservice,
+							backgroundColor: color,
+							borderColor: color,
+							data: [...grades],
+						}
+					);
+				}
+
+			}
+		
+			const setup = {
+				type: 'line',
+				data: {
+					labels: labels,
+					datasets: datasets
+				},
+				options: {}
+			}	
+			res.render('assessmentsByDomain', {setup: setup, domain: req.params.domain});
+		});
+		
+
+
+}
