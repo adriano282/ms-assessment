@@ -17,6 +17,6 @@ Mongo Express UI: http://localhost:8011/
 
 ![Screenshot](images/assessment-result.png)
 
-![Screenshot](microservices-grades.chart.png)
+![Screenshot](images/microservices-grades.chart.png)
 
-![Screenshot](list-assessments.png)
+![Screenshot](images/list-assessments.png)
