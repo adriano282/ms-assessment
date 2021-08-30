@@ -86,7 +86,7 @@ exports.postFilledAssessment =  (req, res, next) => {
         pontuation: result.sumPontuation,
 		takenDate: new Date(),
 		yearTaken: '' + new Date().getFullYear(),
-		monthTaken: ('0' + (new Date().getMonth() + 1).slice(-2)),
+		monthTaken: ('0' + (new Date().getMonth() + 1)).slice(-2),
 		microserNameAssessmentYearAndMonth: result.assessment.microserviceName + new Date().getFullYear() + (new Date().getMonth() + 1)
 	})
 	.save()
@@ -175,7 +175,7 @@ exports.getResultsByDomain = (req, res, next) => {
 			.aggregate(
 				[
 					{ "$match" : { 'assessment.microserviceDomain': req.params.domain }},
-					{ "$sort": { takenDate: 1}},
+					{ "$sort": { takenDate: -1}},
 					{ "$group": {
 						_id: "$microserNameAssessmentYearAndMonth",
 						microservice: { $first: "$assessment.microserviceName" },

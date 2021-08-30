@@ -17,11 +17,11 @@ const filledAssessmentSchema = new Schema({
         required: true
    },
    yearTaken: {
-       type: Number,
+       type: String,
        required: true
    },
    monthTaken: {
-       type: Number,
+       type: String,
        required: true
    },
    microserNameAssessmentYearAndMonth: {
