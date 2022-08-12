@@ -1,4 +1,4 @@
-# ms-assessment (doing)
+# ms-assessment
 A simple web application to register microservice application assessment using a survey form.
 
 The questionary is based on book Production Ready Microservices
